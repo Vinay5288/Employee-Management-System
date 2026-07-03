@@ -2,7 +2,7 @@
 
 ## Overview
 
-A web-based Employee Management System developed using Java Servlets, JSP, JDBC, HTML, CSS, and MySQL. The application allows users to manage employee records through a simple and responsive interface.
+A web-based Employee Management System developed using Java Servlets, JSP, JDBC, HTML, CSS, and PostgreSQL. The application allows users to manage employee records through a simple and responsive interface.
 
 ## Features
 
@@ -21,7 +21,7 @@ A web-based Employee Management System developed using Java Servlets, JSP, JDBC,
 - JDBC
 - HTML5
 - CSS3
-- MySQL
+- PostgreSQL
 - Apache Tomcat
 - Eclipse IDE
 
