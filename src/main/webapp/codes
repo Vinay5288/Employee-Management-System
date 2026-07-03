@@ -1,0 +1,381 @@
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+	font-family:arial;
+}
+body{
+	background: rgb(192, 192, 192);
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 40px;
+}
+.container{
+	width:100%;
+	max-width: 700px;
+	background: lightblue;
+	padding: 35px;
+	border-radius: 15px;
+	box-shadow: 0 10px 30px blue;
+}
+.welcome-box{
+	background:lightblue;
+	padding:40px;
+	border-radius: 15px;
+	text-align: center;
+	width: 500px;
+	box-shadow: 0 10px 30px black;
+}
+h1{
+	color:blue;
+	margin-bottom: 25px;
+	text-align: center;
+}
+a{
+	text-decoration: none;
+	color:blue;
+	background: lightgreen;
+	padding: 10px 20px;
+	border-radius:8px;
+	display: inline-block;
+	margin:10px;
+	cursor: pointer;
+	
+}
+a:hover{
+	background: green;
+}
+form{
+	margin-top:20px;
+}
+label{
+	font-weight:600;
+	display: block;
+	margin-top: 15px;
+	margin-bottom: 5px;
+}
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=number]{
+	width:100%;
+	padding: 12px;
+	border:1px solid white;
+	border-radius : 8px;
+}
+input[type=radio]{
+	margin-left:10px;
+	margin-right:5px;
+}
+input[type=submit]{
+	width:100%;
+	padding:13px;
+	margin-top:25px;
+	border:none;
+	background: red;
+	color: white;
+	border-radius:8px;
+	font-size:16px;
+	cursor:pointer;
+}
+input[type=submit]:hover{
+	background: orange;
+}
+
+table{
+	width: 100%;
+	border-collapse: collapse;
+	background: white;
+	box-shadow: 0 10px 25px rgba(0,0,0,.15);
+	border-radius: 10px;
+	overflow: hidden;
+}
+th{
+	background: #2563eb;
+	color: white;
+	padding: 14px;
+}
+td{
+	padding: 12px;
+	text-align: center;
+	border-bottom: 1px solid #ddd;
+}
+tr:nth-child(even){
+	background:lightblue;
+}
+
+/* ===========================
+   HR Management System UI
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#eef2ff,#dbeafe,#f8fafc);
+    min-height:100vh;
+    color:#1e293b;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Employee Registration</title>
+<link rel="stylesheet" href="style.css" >
+
+</head>
+<body>
+	<div class="container">
+	<h1>Employee Registration</h1>
+	<form action="register">
+		<label>Empid:</label><input type="text" name="empid"><br>
+		<label>Name: </label><input type="text" name="name"><br>
+		<label>Email:</label> <input type="email" name="email"><br>
+		<label>Password: </label><input type="password" name="password"><br>
+		<label>Age: </label><input type="number" name="age"><br>
+		<label>Gender: </label> Male<input type="radio" name="gender" value="male">
+		Female<input type="radio" name="gender" value="female"><br>
+		<label>Salary: </label><input type="text" name="salary"><br>
+		<label>Department: </label><input type="text" name="department"><br>
+		<input type="submit" value="register">
+	</form>
+	</div>
+</body>
+</html> 
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="welcome-box">
+		<h1>Welcome To My World</h1>
+		<a href="EmployeeRegistration.html">Register Employee</a><br>
+		<a href="display">Display All Employees</a>
+		<form action="displayById">
+		<label>Enter Id To Display</label>
+		<input type="text" placeholder="Enter Id" name="empid">
+		<input type="submit">
+		</form>
+	</div>
+</body>
+</html>
+
+<%@page import ="com.ty.emp_management.entity.Employee" %>
+<%@page import = "java.util.List" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Employee Details</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<%
+	List<Employee> emp = (List<Employee>)request.getAttribute("employee");
+	%>
+	<table border="1" rules="all">
+		<tr>
+			<th>Empid</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Password</th>
+			<th>Age</th>
+			<th>Gender</th>
+			<th>Department</th>
+			<th>Salary</th>
+			<th colspan=2>Action</th>
+		</tr>
+		<% for(Employee e :emp){ %>
+		<tr>
+			<td><%=e.getEmpid() %></td>
+			<td><%=e.getName() %></td>
+			<td><%=e.getEmail() %></td>
+			<td><%=e.getPassword() %></td>
+			<td><%=e.getAge() %></td>
+			<td><%=e.getGender() %></td>
+			<td><%=e.getDepartment()%></td>
+			<td><%=e.getSalary() %></td>
+			<td><a href="update-employee.jsp?id=<%=e.getEmpid()%>">Update</a></td>
+			<td><a href="delete?id=<%=e.getEmpid() %>">Delete</a></td>
+		</tr>
+		<%} %>
+	</table>
+	<a href="welcome.jsp">Home Page</a>
+</body>
+</html>
+//display1
+<%@page import="com.ty.emp_management.entity.Employee" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Employee Details</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<%Employee emp = (Employee)request.getAttribute("employee"); %>
+	<table border="1" rules="all">
+		<tr>
+			<th>Empid</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Password</th>
+			<th>Age</th>
+			<th>Gender</th>
+			<th>Department</th>
+			<th>Salary</th>
+		</tr>
+		<tr>
+			<td><%=emp.getEmpid() %></td>
+			<td><%=emp.getName() %></td>
+			<td><%=emp.getEmail() %></td>
+			<td><%=emp.getPassword() %></td>
+			<td><%=emp.getAge() %></td>
+			<td><%=emp.getGender() %></td>
+			<td><%=emp.getDepartment()%></td>
+			<td><%=emp.getSalary() %></td>
+		</tr>
+	</table>
+</body>
+</html>
+//update employee
+<%@page import="com.ty.emp_management.entity.Employee"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Employee Details</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<%
+Employee emp = (Employee) request.getAttribute("employee");
+%>
+
+<div class="container">
+
+    <h1>Employee Details</h1>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Employee ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Department</th>
+                    <th>Salary</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td><%=emp.getEmpid()%></td>
+                    <td><%=emp.getName()%></td>
+                    <td><%=emp.getEmail()%></td>
+                    <td><%=emp.getPassword()%></td>
+                    <td><%=emp.getAge()%></td>
+                    <td><%=emp.getGender()%></td>
+                    <td><%=emp.getDepartment()%></td>
+                    <td>₹ <%=emp.getSalary()%></td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <br>
+
+    <div class="action-buttons">
+
+        <a href="display" class="btn btn-primary">
+            View All Employees
+        </a>
+
+        <a href="welcome.jsp" class="btn btn-secondary">
+            Back to Home
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
+
+//update
+<%@page import="com.ty.emp_management.entity.Employee"%>
+<%@page import="com.ty.emp_management.dao.EmployeeDao"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<%
+		int empid = Integer.parseInt(request.getParameter("id"));
+		EmployeeDao dao = new EmployeeDao();
+		Employee emp = dao.fetchById(empid);
+	%>
+	<div class="container">
+	<form action="updateEmployee">
+		<label>Empid: </label><input type="text" name="empid" value="<%=emp.getEmpid() %>" readonly><br>
+		<label>Name: </label><input type="text" name="name" value="<%=emp.getName() %>"><br>
+		<label>Email: </label><input type="email" name="email" value="<%=emp.getEmail() %>"><br>
+		<label>Password: </label><input type="password" name="password" value="<%=emp.getPassword() %>"><br>
+		<label>Age: </label><input type="number" name="age" value="<%=emp.getAge() %>"><br>
+		<label>Gender: Male<input type="radio" name="gender" value="male">
+		Female<input type="radio" name="gender" value="female"><br>
+		<label>Salary: </label><input type="text" name="salary" value="<%=emp.getSalary() %>"><br>
+		<label>Department: </label><input type="text" name="department" value="<%=emp.getDepartment() %>"><br>
+		<input type="submit" value="update">
+		</div>
+	</form>
+</body>
+</html>
