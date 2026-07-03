@@ -31,6 +31,11 @@ A web-based Employee Management System developed using Java Servlets, JSP, JDBC,
 src/
 WebContent/
 ```
+## 🎥 Project Demo
+
+Watch the complete project demo on YouTube:
+
+🔗 https://youtu.be/22KY0WgRLRQ
 
 ## Screenshots
 
